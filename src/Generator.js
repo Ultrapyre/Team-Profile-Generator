@@ -145,11 +145,13 @@ class Generator{
 //Accepts the current array, and processes it into the requested HTML before quitting the application.
     finalize(){
         console.log("Finished? Give me a moment to slap it all together...");
+        const htmlProfile = []
         this.members.forEach((employee) => {
             //Different employees have different-looking displays. getRole can be used to choose the right look for the right member.
             const role = employee.getRole();
             switch (role){
                 case "Manager":
+                    htmlProfile.push(``)
                     break;
                 case "Engineer":
                     break;
