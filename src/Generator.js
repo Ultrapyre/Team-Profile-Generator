@@ -151,15 +151,70 @@ class Generator{
             const role = employee.getRole();
             switch (role){
                 case "Manager":
-                    htmlProfile.push(``)
+                    htmlProfile.push(`<div class="col-md-3 m-3">
+                    <div class="bg-dark-subtle bg-gradient p-3 border">
+                        <h2>${employee.name}</h2>
+                        <h3>Manager 💡</h3>
+                    </div>
+                    <div class="border p-3 bg-dark bg-gradient text-white">
+                        <p class="border p-3">ID: ${employee.id}</p>
+                        <p class="border p-3">Email: ${employee.email}</p>
+                        <p class="border p-3">Office Number: ${employee.officenumber}</p>
+                    </div>
+                  </div>`)
                     break;
                 case "Engineer":
+                    htmlProfile.push(`<div class="col-md-3 m-3">
+                    <div class="bg-dark-subtle bg-gradient p-3 border">
+                        <h2>${employee.name}</h2>
+                        <h3>Engineer 🔧</h3>
+                    </div>
+                    <div class="border p-3 bg-dark bg-gradient text-white">
+                        <p class="border p-3">ID: ${employee.id}</p>
+                        <p class="border p-3">Email: ${employee.email}</p>
+                        <p class="border p-3">Github: ${employee.github}</p>
+                    </div>
+                  </div>`)
                     break;
                 case "Intern":
+                    htmlProfile.push(`<div class="col-md-3 m-3">
+                    <div class="bg-dark-subtle bg-gradient p-3 border">
+                        <h2>${employee.name}</h2>
+                        <h3>Intern 🌱</h3>
+                    </div>
+                    <div class="border p-3 bg-dark bg-gradient text-white">
+                        <p class="border p-3">ID: ${employee.id}</p>
+                        <p class="border p-3">Email: ${employee.email}</p>
+                        <p class="border p-3">School: ${employee.school}</p>
+                    </div>
+                  </div>`)
                     break;
             }
         })
-        console.log("\nAll done! Go take a look in the 'public' folder for your newly created website!");
+        const htmlFull = `<!DOCTYPE html>
+        <html lang="en-US">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+            <title>Team Profile</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+          </head>
+        
+          <body>
+            <div class="bg-primary text-white text-center p-5">
+              <h1>Example Manager's Team</h1>
+            </div>
+            <div class="container-fluid p-5">
+              <div class="row p-3 justify-content-center">
+                ${htmlProfile.join("")}
+              </div> 
+            </div>
+          </body>
+        </html>`
+        fs.writeFile("../public/index.html", htmlFull, (err) =>
+        err ? console.error(`Oh dear, something broke: ${err}`) 
+        : console.log("\nAll done! Go take a look in the 'public' folder for your newly created website!"))
         process.exit(0);
       }
 }
