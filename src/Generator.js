@@ -159,7 +159,7 @@ class Generator{
                     <div class="border p-3 bg-dark bg-gradient text-white">
                         <p class="border p-3">ID: ${employee.id}</p>
                         <p class="border p-3">Email: ${employee.email}</p>
-                        <p class="border p-3">Office Number: ${employee.officenumber}</p>
+                        <p class="border p-3 m-0">Office Number: ${employee.officenumber}</p>
                     </div>
                   </div>`)
                     break;
@@ -172,7 +172,7 @@ class Generator{
                     <div class="border p-3 bg-dark bg-gradient text-white">
                         <p class="border p-3">ID: ${employee.id}</p>
                         <p class="border p-3">Email: ${employee.email}</p>
-                        <p class="border p-3">Github: ${employee.github}</p>
+                        <div class="border row align-items-start p-3 m-0"><p class="col-auto p-0 m-0 me-1">Github:</p><a class="col-auto p-0 m-0" href="https://github.com/${employee.github}">${employee.github}</a></div>
                     </div>
                   </div>`)
                     break;
@@ -185,7 +185,7 @@ class Generator{
                     <div class="border p-3 bg-dark bg-gradient text-white">
                         <p class="border p-3">ID: ${employee.id}</p>
                         <p class="border p-3">Email: ${employee.email}</p>
-                        <p class="border p-3">School: ${employee.school}</p>
+                        <p class="border p-3 m-0">School: ${employee.school}</p>
                     </div>
                   </div>`)
                     break;
@@ -203,7 +203,7 @@ class Generator{
         
           <body>
             <div class="bg-primary text-white text-center p-5">
-              <h1>Example Manager's Team</h1>
+              <h1>${this.members[0].name}'s Team</h1>
             </div>
             <div class="container-fluid p-5">
               <div class="row p-3 justify-content-center">
@@ -212,10 +212,9 @@ class Generator{
             </div>
           </body>
         </html>`
-        fs.writeFile("../public/index.html", htmlFull, (err) =>
+        fs.writeFile("./public/index.html", htmlFull, (err) =>
         err ? console.error(`Oh dear, something broke: ${err}`) 
         : console.log("\nAll done! Go take a look in the 'public' folder for your newly created website!"))
-        process.exit(0);
       }
 }
 
